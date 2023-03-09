@@ -1,4 +1,4 @@
-import { Formik, Field } from "formik";
+import { Formik, Field, Form} from "formik";
 import PropTypes from "prop-types";
 import * as yup from "yup";
 import css from './Filter.module.css'
@@ -10,12 +10,13 @@ const FilterSchema = yup.object().shape({
 const Filter = ({ id, onChangeFilter }) => {
   return (
     <>
-      <p>Find contacts by name</p>
+      <p className={css['filter-description']}>Find contacts by name</p>
       <Formik
         initialValues={{ filter: "" }}
         validationSchema={FilterSchema}
       >
         {({ values, handleChange }) => (
+           <Form autoComplete='off'>
           <Field
             id={id}
             name="filter"
@@ -25,8 +26,10 @@ const Filter = ({ id, onChangeFilter }) => {
               handleChange(evt);
               onChangeFilter(evt);
             }}
-          />
+            className={css['filter-input']}
+          /></Form>
         )}
+        
       </Formik>
     </>
   );

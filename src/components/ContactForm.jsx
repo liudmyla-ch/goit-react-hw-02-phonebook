@@ -1,7 +1,7 @@
 import { Formik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
-import css from './ContactForm.module.css'
+import css from './ContactForm.module.css';
 
 const ContactForm = ({ onSubmitForm, id }) => {
   const validationSchema = Yup.object({
@@ -21,23 +21,25 @@ const ContactForm = ({ onSubmitForm, id }) => {
 
   return (
     <Formik
-    initialValues={{ name: '', number: '' }}
-    validationSchema={validationSchema}
-    onSubmit={(values, { resetForm }) => {
-      onSubmitForm(values);
-      resetForm();
-    }}
-  >
-      <Form>
-        <label>
+      initialValues={{ name: '', number: '' }}
+      validationSchema={validationSchema}
+      onSubmit={(values, { resetForm }) => {
+        onSubmitForm(values);
+        resetForm();
+      }}
+    >
+      <Form autoComplete='off'>
+        <label className={css.label}>
           Name
-          <Field id={id} type="text" name="name" required />
+          <Field id={id} type="text" name="name" className={css.input} required />
         </label>
-        <label>
+        <label className={css.label}>
           Number
-          <Field id={id} type="tel" name="number" required />
+          <Field id={id} type="tel" name="number" className={css.input} required />
         </label>
-        <button type="submit">Add contact</button>
+        <button type="submit" className={css.button}>
+          Add contact
+        </button>
       </Form>
     </Formik>
   );
