@@ -1,0 +1,11 @@
+p {
+    margin-bottom: 10px;
+  }
+  
+  input[type="search"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 30%;
+  }
+  
